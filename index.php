@@ -3,7 +3,8 @@ session_start();
 require 'db.php';
 
 header('Content-Type: text/html; charset=UTF-8');
-
+header("X-XSS-Protection: 1; mode=block");
+header("X-Content-Type-Options: nosniff");
 if (empty($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 }
